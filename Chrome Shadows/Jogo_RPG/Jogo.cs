@@ -221,6 +221,9 @@ namespace NeoCapitalRPG
                 Console.WriteLine("2 - Mercado Abandonado (Enfrentar gangue Chrome Shadows)");
                 Console.WriteLine("3 - Verificar inventário");
                 Console.WriteLine("4 - Melhorar arma (requer peças)");
+                // NOVA OPÇÃO:
+                if (jogador.XP >= 100)
+                    Console.WriteLine("5 - Tentar romper o ciclo (Finalizar o jogo)");
 
                 Console.Write("\nSua escolha: ");
                 string escolha = Console.ReadLine();
@@ -239,11 +242,25 @@ namespace NeoCapitalRPG
                     case "4":
                         MelhorarArma();
                         break;
+                    case "5":
+                        if (jogador.XP >= 100)
+                        {
+                            FinalBom();
+                            return;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Você ainda não tem XP suficiente para romper o ciclo!");
+                            Console.ResetColor();
+                        }
+                        break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Opção inválida!");
                         Console.ResetColor();
                         break;
+
                 }
             }
         }
