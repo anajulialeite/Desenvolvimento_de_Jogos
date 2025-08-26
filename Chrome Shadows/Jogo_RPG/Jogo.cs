@@ -30,7 +30,7 @@ namespace NeoCapitalRPG
         private void ExibirTituloJogo()
         {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine(@"
     ███╗   ██╗███████╗ ██████╗       ██████╗ █████╗ ██████╗ ██╗████████╗ █████╗ ██╗     
     ████╗  ██║██╔════╝██╔═══██╗     ██╔════╝██╔══██╗██╔══██╗██║╚══██╔══╝██╔══██╗██║     
@@ -39,7 +39,7 @@ namespace NeoCapitalRPG
     ██║ ╚████║███████╗╚██████╔╝     ╚██████╗██║  ██║██║     ██║   ██║   ██║  ██║███████╗
     ╚═╝  ╚═══╝╚══════╝ ╚═════╝       ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝
     ");
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("                            ═══ CAÇADOR DE CRÉDITOS ═══");
             Console.ResetColor();
             Console.WriteLine("\n                              Neo-Capital - Ano 2147");
@@ -562,7 +562,7 @@ namespace NeoCapitalRPG
 
         private void ExibirArte(string tipo)
         {
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
 
             switch (tipo)
             {
