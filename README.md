@@ -11,10 +11,16 @@ Convidamos você a clonar o repositório e experimentar o jogo!
 
 Usei o .NET 9 pra fazer todo o desenvolvimento do Jogo e dos exercícios.
 
+## Instrução para Executar
+
 Clone este repositório:
 ```bash
 git clone https://github.com/anajulialeite/Desenvolvimento_de_Jogos.git
 ```
+
+```bash
+f5
+````
 
 ## Imagens do Jogo Inicalizando
 
