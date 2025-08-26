@@ -445,7 +445,7 @@ namespace NeoCapitalRPG
             }
 
             // Final Ruim - Ser consumido pelo ciclo
-            if (jogador.XP < 20 && jogador.CiclosCompletados >= 10)
+            if (jogador.XP < 20 && jogador.CiclosCompletados >= 5)
             {
                 FinalRuim();
                 return true;
