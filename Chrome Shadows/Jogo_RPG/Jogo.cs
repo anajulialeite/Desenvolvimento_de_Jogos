@@ -437,21 +437,21 @@ namespace NeoCapitalRPG
 
         private bool VerificarFinais()
         {
-            // Final Bom - Romper o ciclo
+            // Final Bom - Romper o ciclo (XP >= 100 e HP > 0)
             if (jogador.XP >= 100 && jogador.HP > 0)
             {
                 FinalBom();
                 return true;
             }
 
-            // Final Ruim - Ser consumido pelo ciclo
+            // Final Ruim - Consumido pelo ciclo (XP < 20 e ciclos >= 5)
             if (jogador.XP < 20 && jogador.CiclosCompletados >= 5)
             {
                 FinalRuim();
                 return true;
             }
 
-            // Morte
+            // Final Morte - HP zerado
             if (jogador.HP <= 0)
             {
                 FinalMorte();
@@ -515,13 +515,13 @@ namespace NeoCapitalRPG
             Thread.Sleep(2000);
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("\n\" VOCÊ FOI CONSUMIDO PELO CICLO.\"");
+            Console.WriteLine("\n\"VOCÊ FOI CONSUMIDO PELO CICLO.\"");
             Console.ResetColor();
 
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("\n\"Alguns resolvem lutar, outros só aceitam,");
             Console.WriteLine("enquanto você... você acabou se tornando apenas mais um");
-            Console.WriteLine("'eco digital' vagando na viela.\"");
+            Console.WriteLine("‘eco digital’ vagando na viela.\"");
             Console.ResetColor();
 
             Console.WriteLine("\n[Cartucho empty]");
