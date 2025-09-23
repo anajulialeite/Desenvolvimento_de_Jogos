@@ -1,7 +1,8 @@
-﻿using ConsoleApp1;
+﻿using NeoCapitalRPG.Model;
 using System;
 
-namespace NeoCapitalRPG
+namespace NeoCapitalRPG.Model
+
 {
     class Program
     {

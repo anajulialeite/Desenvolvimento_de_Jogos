@@ -1,8 +1,8 @@
-﻿using ConsoleApp1;
+﻿using NeoCapitalRPG.Model;
 using System;
 using System.Threading;
 
-namespace NeoCapitalRPG
+namespace NeoCapitalRPG.Model
 {
     public class Jogo
     {
