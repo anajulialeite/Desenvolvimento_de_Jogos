@@ -36,6 +36,10 @@ Ana Júllia de Lima Aguiar leite
     <img src="https://img.shields.io/badge/LinkedIn-%231C003F?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
 </a>
 
+## Links Úteis
+
+Python Package Index: <a href= "https://anajulialeite.github.io/projeto-site/">Baixar pacotes Python</a>
+
 ## License
 
 [![MIT License](https://img.shields.io/badge/License-MIT-%231C003F.svg)](./LICENSE)
