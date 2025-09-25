@@ -104,24 +104,40 @@ namespace NeoCapitalRPG.Model
             Console.Clear();
             ExibirArte("cidade");
 
-            // Tocar áudio MP3 de introdução
-            try
+            // Cria uma thread para o áudio tocar
+            bool pararAudio = false;
+            Thread audioThread = new Thread(() =>
             {
-                using (var audioFile = new AudioFileReader("C:\\Users\\Master\\Documents\\UNIDESC\\Sistema de Informação\\Sétimo Semestre\\Desenvolvimento de Jogos\\Desenvolvimento_de_Jogos\\Chrome Shadows\\NeoCapitalRPG\\bin\\Debug\\Music\\keyboard-typing-sound-effect-335503.mp3"))
-                using (var outputDevice = new WaveOutEvent())
+                try
                 {
-                    outputDevice.Init(audioFile);
-                    outputDevice.Play();
-                    Thread.Sleep(5000); // Tocar por 5 segundos
-                    outputDevice.Stop();
+                    using (var audioFile = new AudioFileReader("C:\\Users\\Master\\Documents\\UNIDESC\\Sistema de Informação\\Sétimo Semestre\\Desenvolvimento de Jogos\\Desenvolvimento_de_Jogos\\Chrome Shadows\\NeoCapitalRPG\\bin\\Debug\\Music\\keyboard-typing-sound-effect-335503.mp3"))
+                    using (var outputDevice = new WaveOutEvent())
+                    {
+                        outputDevice.Init(audioFile);
+                        outputDevice.Volume = 0.3f;
+
+                        while (!pararAudio)
+                        {
+                            audioFile.Position = 0; // reinicia o áudio
+                            outputDevice.Play();
+                            while (outputDevice.PlaybackState == PlaybackState.Playing && !pararAudio)
+                            {
+                                Thread.Sleep(100);
+                            }
+                            outputDevice.Stop();
+                        }
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Erro ao tocar áudio: {ex.Message}");
-                Console.ResetColor();
-            }
+
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Erro ao tocar áudio: {ex.Message}");
+                    Console.ResetColor();
+                }
+            });
+
+            audioThread.Start();
 
             Console.WriteLine("═══ PRÓLOGO ═══\n");
 
@@ -140,7 +156,7 @@ namespace NeoCapitalRPG.Model
                 "É aí que você entra: um(a) caçador(a) de créditos que, após mais uma briga",
                 "genérica de bar, se vê preso em um dilema incomum.",
                 "",
-                "O problema? O mesmo dia se repete. Sempre.",
+                "O problema? O mesmo dia se repete, sempre!",
                 "",
                 "Toda vez que o sol 'nasce', você desperta na mesma viela suja,",
                 "com as mesmas oportunidades de luta.",
@@ -151,17 +167,23 @@ namespace NeoCapitalRPG.Model
             foreach (string linha in introducao)
             {
                 if (string.IsNullOrEmpty(linha))
-                {
                     Console.WriteLine();
-                }
                 else
-                {
                     EscreverTextoAnimado(linha);
-                }
             }
 
             Console.WriteLine("\n\nPressione ENTER para continuar...");
             Console.ReadLine();
+
+            // Mantém o programa aguardando ENTER, mas o áudio continua tocando
+            while (!Console.KeyAvailable || Console.ReadKey(true).Key != ConsoleKey.Enter)
+            {
+                Thread.Sleep(50);
+            }
+
+            // Parar o áudio
+            pararAudio = true;
+            audioThread.Join();
         }
 
         private void LoopPrincipal()
