@@ -1,7 +1,8 @@
-﻿using NeoCapitalRPG.Model;
+﻿using NeoCapitalRPG.Helpers;
+using NAudio.Wave;
+using NeoCapitalRPG.Model;
 using System;
 using System.Threading;
-using NAudio.Wave;
 
 namespace NeoCapitalRPG.Model
 {
@@ -16,7 +17,7 @@ namespace NeoCapitalRPG.Model
         private Arma punhal = new Arma("Punhal", 3, "Rápido e silencioso, perfeito para ataques furtivos");
         private Arma canoBlindsado = new Arma("Cano Blindado", 10, "Melhoramento do cano de ferro com peças coletadas");
 
-        public void IniciarJogo()
+        public void IniciarJogo() 
         {
             ExibirTituloJogo();
             CriarPersonagem();
@@ -28,7 +29,7 @@ namespace NeoCapitalRPG.Model
             }
         }
 
-        private void ExibirTituloJogo()
+        private void ExibirTituloJogo() // Colocar música aqui
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
@@ -46,6 +47,47 @@ namespace NeoCapitalRPG.Model
             Console.WriteLine("\n                              Neo-Capital - Ano 2147");
             Console.WriteLine("\n                          Pressione ENTER para começar...");
             Console.ReadLine();
+
+            // Thread para tocar a música em loop
+            bool pararMusica = false;
+            Thread musicaThread = new Thread(() =>
+            {
+                try
+                {
+                    using (var audioFile = new AudioFileReader("C:\\Users\\Master\\Documents\\UNIDESC\\Sistema de Informação\\Sétimo Semestre\\Desenvolvimento de Jogos\\Desenvolvimento_de_Jogos\\Chrome Shadows\\NeoCapitalRPG\\Music\\musica-inicial.mp3"
+))
+                    using (var outputDevice = new WaveOutEvent())
+                    {
+                        outputDevice.Init(audioFile);
+                        outputDevice.Volume = 1.0f; // 100% do volume
+
+                        while (!pararMusica)
+                        {
+                            audioFile.Position = 0;  // reinicia o áudio
+                            outputDevice.Play();
+                            while (outputDevice.PlaybackState == PlaybackState.Playing && !pararMusica)
+                            {
+                                Thread.Sleep(100);
+                            }
+                            outputDevice.Stop();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Erro ao tocar música: {ex.Message}");
+                    Console.ResetColor();
+                }
+            });
+
+            musicaThread.Start();
+
+            Console.ReadLine(); // espera o ENTER
+
+            // parar música
+            pararMusica = true;
+            musicaThread.Join();
         }
 
         private void CriarPersonagem()
@@ -114,12 +156,13 @@ namespace NeoCapitalRPG.Model
                     using (var outputDevice = new WaveOutEvent())
                     {
                         outputDevice.Init(audioFile);
-                        outputDevice.Volume = 0.3f;
+                        outputDevice.Volume = 1.0f; // 100% do volume
 
                         while (!pararAudio)
                         {
                             audioFile.Position = 0; // reinicia o áudio
                             outputDevice.Play();
+
                             while (outputDevice.PlaybackState == PlaybackState.Playing && !pararAudio)
                             {
                                 Thread.Sleep(100);
@@ -172,6 +215,10 @@ namespace NeoCapitalRPG.Model
                     EscreverTextoAnimado(linha);
             }
 
+            // Quando o prólogo terminar, para a música
+            pararAudio = true;
+            audioThread.Join();
+
             Console.WriteLine("\n\nPressione ENTER para continuar...");
             Console.ReadLine();
 
@@ -216,8 +263,13 @@ namespace NeoCapitalRPG.Model
             MenuViela();
         }
 
-        private void EscolherArmaInicial()
+        private void EscolherArmaInicial() 
         {
+            Console.Clear();
+
+            // Tocar música de escolha de arma
+            AudioHelper.TocarMusicaEmLoop("C:\\Users\\Master\\Documents\\UNIDESC\\Sistema de Informação\\Sétimo Semestre\\Desenvolvimento de Jogos\\Desenvolvimento_de_Jogos\\Chrome Shadows\\NeoCapitalRPG\\Music\\Musicas-do-ciclo.mp3", 1.0f);
+
             Console.WriteLine("\n═══ ESCOLHA SUA ARMA ═══");
             Console.WriteLine("Você encontra duas opções no chão da viela:");
             Console.WriteLine($"1 - {canoFerro.Nome} (+{canoFerro.Bonus} ATK) - {canoFerro.Descricao}");
@@ -250,25 +302,37 @@ namespace NeoCapitalRPG.Model
                     Console.WriteLine("Escolha inválida! Digite 1 ou 2.");
                     Console.ResetColor();
                 }
+
+                // Para música antes de continuar para a próxima cena
+                AudioHelper.PararMusica();
             }
         }
 
-        private void MenuViela()
+        private void MenuViela() // mesma música da escolha de arma
         {
             while (true)
             {
+                Console.Clear();
+
+                // Tocar música de fundo da viela
+                AudioHelper.TocarMusicaEmLoop("C:\\Users\\Master\\Documents\\UNIDESC\\Sistema de Informação\\Sétimo Semestre\\Desenvolvimento de Jogos\\Desenvolvimento_de_Jogos\\Chrome Shadows\\NeoCapitalRPG\\Music\\Musicas-do-ciclo.mp3", 1.0f);
+
                 Console.WriteLine("\n═══ VIELA INICIAL ═══");
                 Console.WriteLine("Para onde você quer ir?");
                 Console.WriteLine("1 - Ferro-Velho (Batalhar contra drones antigos)");
                 Console.WriteLine("2 - Mercado Abandonado (Enfrentar gangue Chrome Shadows)");
                 Console.WriteLine("3 - Verificar inventário");
                 Console.WriteLine("4 - Melhorar arma (requer peças)");
+
                 // NOVA OPÇÃO:
                 if (jogador.XP >= 100)
                     Console.WriteLine("5 - Tentar romper o ciclo (Finalizar o jogo)");
 
                 Console.Write("\nSua escolha: ");
                 string escolha = Console.ReadLine();
+
+                // Para a música assim que o jogador confirma a escolha
+                AudioHelper.PararMusica();
 
                 switch (escolha)
                 {
@@ -302,6 +366,7 @@ namespace NeoCapitalRPG.Model
                         Console.WriteLine("Opção inválida!");
                         Console.ResetColor();
                         break;
+                
 
                 }
             }
@@ -362,7 +427,7 @@ namespace NeoCapitalRPG.Model
             Console.ReadLine();
         }
 
-        private bool IniciarBatalha(Inimigo inimigo)
+        private bool IniciarBatalha(Inimigo inimigo) // Colocar música
         {
             Console.WriteLine($"\n═══ BATALHA INICIADA ═══");
             Console.WriteLine($"Você enfrenta: {inimigo.Nome}");
@@ -535,7 +600,7 @@ namespace NeoCapitalRPG.Model
             jogoAtivo = false;
         }
 
-        private void FinalRuim()
+        private void FinalRuim() // Música para aqui
         {
             Console.Clear();
             ExibirArte("fantasma");
@@ -571,7 +636,7 @@ namespace NeoCapitalRPG.Model
             jogoAtivo = false;
         }
 
-        private void FinalMorte()
+        private void FinalMorte() // Música de morte
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkRed;
