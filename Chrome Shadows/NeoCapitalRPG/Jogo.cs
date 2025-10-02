@@ -308,7 +308,7 @@ namespace NeoCapitalRPG.Model
             }
         }
 
-        private void MenuViela() // mesma música da escolha de arma
+        private void MenuViela() // Usei a classe AudioHelper para tocar música dos dois métodos EscolherArmaInicial e MenuViela
         {
             while (true)
             {
