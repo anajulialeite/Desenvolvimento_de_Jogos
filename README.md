@@ -11,7 +11,7 @@ Convidamos você a clonar o repositório e experimentar o jogo!
 
 Usei o .NET 9 pra fazer todo o desenvolvimento do Jogo e dos exercícios.
 
-## Instrução para Executar
+## Instrução para executar
 
 Clone este repositório:
 ```bash
@@ -22,7 +22,7 @@ git clone https://github.com/anajulialeite/Desenvolvimento_de_Jogos.git
 f5
 ````
 
-## Imagens do Jogo Inicalizando
+## Imagens do jogo inicalizando
 
 <img src="Imagens/Início.png" alt="Jogos-RPG" align="center" width="300">
 
