@@ -4,9 +4,7 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg" align="left" width="50" height="50"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-original.svg" align="center" width="50" height="50"/>
 
-Esse repositório contém todos os exercícios feitos em sala de aula e projetos relacionados a jogos.
-
-**Chrome Shadows** é um jogo de RPG desenvolvido como parte de um projeto acadêmico (valendo 25 pontos na disciplina). Sua proposta traz uma narrativa envolvente em um cenário **Cyberpunk**, com batalhas interativas e cheias de ação.
+Esse repositório contém o jogo **Chrome Shadows** é um jogo de RPG desenvolvido como parte de um projeto acadêmico (valendo 25 pontos na disciplina). Sua proposta traz uma narrativa envolvente em um cenário **Cyberpunk**, com batalhas interativas e cheias de ação.
 Convidamos você a clonar o repositório e experimentar o jogo!
 
 Usei o .NET 9 pra fazer todo o desenvolvimento do Jogo e dos exercícios.
