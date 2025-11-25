@@ -6,8 +6,6 @@ namespace NeoCapitalRPG
     {
         private Personagem jogador;
         private bool jogoAtivo;
-
-        
         private GerenciadorHistoria gerenciadorHistoria;
         private GerenciadorInventario gerenciadorInventario;
         private SistemaBatalha sistemaBatalha;
@@ -45,8 +43,6 @@ namespace NeoCapitalRPG
 
             ExecutarLoopPrincipal();
         }
-
-
 
         private void ExecutarLoopPrincipal()
         {

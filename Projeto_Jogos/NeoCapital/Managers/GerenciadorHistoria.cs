@@ -116,7 +116,6 @@ namespace NeoCapitalRPG
                 }
             }
 
-
             // Parar música do prólogo
             Program.AudioGlobal.Parar();
 
@@ -137,7 +136,6 @@ namespace NeoCapitalRPG
             // Agora sim pode ir para o menu da viela
             Program.GerenciadorMenuGlobal.MenuViela(Program.JogadorGlobal);
         }
-
 
         public void ExibirInicioCiclo(int numeroCiclo)
         {

@@ -7,8 +7,7 @@ namespace NeoCapitalRPG
         private GerenciadorCenarios gerenciadorCenarios;
         private GerenciadorInventario gerenciadorInventario;
 
-       
-        private AudioService audioService = new AudioService();
+       private AudioService audioService = new AudioService();
 
         public GerenciadorMenu(GerenciadorCenarios gerenciadorCenarios, GerenciadorInventario gerenciadorInventario)
         {
@@ -29,7 +28,6 @@ namespace NeoCapitalRPG
 
                 if (ProcessarEscolha(escolha, jogador))
                 {
-                    
                     audioService.Parar();
                     return;
                 }

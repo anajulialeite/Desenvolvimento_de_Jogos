@@ -34,8 +34,7 @@ namespace NeoCapitalRPG
                     Thread.Sleep(100);
                 }
 
-               
-                waveOut?.Stop();
+               waveOut?.Stop();
             });
 
             musicaThread.IsBackground = true;
@@ -64,7 +63,6 @@ namespace NeoCapitalRPG
         }
     }
 
-    
     public class LoopStream : WaveStream
     {
         private readonly WaveStream source;

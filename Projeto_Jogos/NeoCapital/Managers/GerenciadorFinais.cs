@@ -32,7 +32,6 @@ namespace NeoCapitalRPG
             
             Program.AudioGlobal.Parar();
 
-            
             Program.AudioGlobal.TocarMusica("Assets/Musicas/FinalBom.mp3", loop: false);
 
             Console.Clear();
@@ -69,7 +68,6 @@ namespace NeoCapitalRPG
             
             Program.AudioGlobal.Parar();
 
-            
             Program.AudioGlobal.TocarMusica("Assets/Musicas/FinalRuim.mp3", loop: false);
 
             Console.Clear();
@@ -110,7 +108,6 @@ namespace NeoCapitalRPG
           
             Program.AudioGlobal.Parar();
 
-            
             Program.AudioGlobal.TocarMusica("Assets/Musicas/Morte.mp3", loop: false);
 
             Console.Clear();

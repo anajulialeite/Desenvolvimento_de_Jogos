@@ -15,9 +15,7 @@ namespace NeoCapitalRPG
 
         public bool IniciarBatalha(Personagem jogador, Inimigo inimigo)
         {
-            
             audio.TocarMusica("Assets/Musicas/Batalha.mp3", true);
-
 
             Console.WriteLine($"\n═══ BATALHA INICIADA ═══");
             Console.WriteLine($"Você enfrenta: {inimigo.Nome}");

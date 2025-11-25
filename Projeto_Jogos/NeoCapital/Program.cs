@@ -3,7 +3,6 @@
 class Program
 {
     public static AudioService AudioGlobal = new AudioService();
-
     public static GerenciadorMenu GerenciadorMenuGlobal;
     public static Personagem JogadorGlobal;
     public static GerenciadorInventario GerenciadorInventarioGlobal;
