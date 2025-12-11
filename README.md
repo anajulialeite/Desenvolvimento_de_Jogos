@@ -1,7 +1,7 @@
 # Desenvolvimento de Jogos
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" align="left" width="50" height="50"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg" align="left" width="50" height="50"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg" align="left" width="70" height="70"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-original.svg" align="center" width="50" height="50"/>
 
 Esse repositório contém o jogo **Chrome Shadows** é um jogo de RPG desenvolvido como parte de um projeto acadêmico (valendo 25 pontos na disciplina). Sua proposta traz uma narrativa envolvente em um cenário **Cyberpunk**, com batalhas interativas e cheias de ação.
